@@ -1,12 +1,12 @@
     <div id='wrapper'>
-        <h4>Welcome {{username}}!</h4>
+        <h4>Welcome {{username}}! </h4>
     <form>
         <input id="new-tweet" type="text" placeholder="Tweet goes here">
     </form>
-    <button id="button">post</button>
+    <button id="button" ng-click="postData()">post</button>
     </div>
     <div id="tweets">
         <ul class="incoming-tweets">
-            <li> {{userTweet}} </li>
+            <li ng-repeat='tweet in tweets'> {{tweet.username}}: {{tweet.text}} </li>
         </ul>
     </div>
