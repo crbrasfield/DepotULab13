@@ -56,6 +56,7 @@ controllers.controller('TweetsController', ['$scope','$rootScope', '$http', func
             data: incTweet
         }).success(function() {
             $scope.getData();
+            $('#new-tweet').val('');
         });
         }
         
