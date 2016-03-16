@@ -21,7 +21,9 @@ controllers.controller('WelcomeController', ['$scope', '$rootScope', '$http', fu
 }]);
 
 controllers.controller('TweetsController', ['$scope','$rootScope', '$http', function($scope,$rootScope, $http) {
-    console.log($rootScope.username);
+    console.log($rootScope.userName);
+    
+    $scope.username = $rootScope.userName;
     
     $scope.getData = function() {
         $http({
@@ -38,12 +40,16 @@ controllers.controller('TweetsController', ['$scope','$rootScope', '$http', func
     $scope.getData();
 
     $scope.postData = function() {
-        var user = ($rootScope.username + ': ');
+        var user = ($rootScope.userName + ': ');
         var incTweet = {
             text: $('#new-tweet').val(),
             username: $rootScope.userName
         };
-        console.log(incTweet);
+        if (incTweet.text.length == 0){
+            alert('You must enter a tweet to post!')
+            return;
+        }else {
+            console.log(incTweet);
         $http({
             method: 'POST',
             url: '/messages',
@@ -51,6 +57,8 @@ controllers.controller('TweetsController', ['$scope','$rootScope', '$http', func
         }).success(function() {
             $scope.getData();
         });
+        }
+        
 
     };
 
