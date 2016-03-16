@@ -42,6 +42,11 @@ h1 {
     width: 500px;
 }
 
+#login{
+    margin-bottom: 5px;
+
+}
+
 a {
     padding-right: 15px;
     color: darkslategray;
