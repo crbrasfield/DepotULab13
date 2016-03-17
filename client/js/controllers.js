@@ -31,7 +31,7 @@ controllers.controller('TweetsController', ['$scope','$rootScope', '$http', func
             url: '/messages'
         }).success(function(list) {
             console.log(list);
-            var tweetList = list;
+            var tweetList = list.reverse();
             $scope.tweets = tweetList;
             console.log(tweetList);
         });
@@ -55,7 +55,8 @@ controllers.controller('TweetsController', ['$scope','$rootScope', '$http', func
             url: '/messages',
             data: incTweet
         }).success(function() {
-            $scope.getData();
+            $('.incoming-tweets').prepend('<li>' + $scope.username + ': ' + $('#new-tweet').val() + '</li>')
+            // $scope.getData();
             $('#new-tweet').val('');
         });
         }
